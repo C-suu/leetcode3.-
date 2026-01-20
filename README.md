@@ -1,7 +1,6 @@
 # leetcode3. 无重复字符的最长子串 给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串 的长度。
 
-好的，这道题**一步一步、从“完全不懂编程”的角度**来讲解。
-会按要求的顺序来：
+## 解题逻辑：用一段“始终没有重复字符的连续窗口”，在字符串上从左到右滑动，记录这个窗口能达到的最大长度。
 
 ---
 
@@ -21,17 +20,16 @@
 
 ## 二、最终答案（Python 代码）
 
-下面是**标准最优解（时间复杂度 O(n)）**，
-在 **每一行右侧都写了注释** 👇
+下面是**标准最优解（时间复杂度 O(n)）**
 
 ```python
 class Solution:
-    def lengthOfLongestSubstring(self,s):          # 定义一个函数，名字叫 lengthOfLongestSubstring，参数是字符串 s
+    def lengthOfLongestSubstring(self, s: str) -> int:     # 定义一个函数，名字叫 lengthOfLongestSubstring，参数是字符串 s
         char_set = set()                      # 创建一个集合，用来存放当前子串里的字符
         left = 0                              # 左指针，表示子串的左边界
         max_len = 0                           # 记录目前找到的最大长度
 
-        for right in range(len(s)):           # 右指针从 0 遍历到字符串末尾
+        for right in range(len(s)):           # 右指针从 0 遍历到字符串末尾，也可以加上`right = 0`的代码
             while s[right] in char_set:       # 如果右指针指向的字符已经出现过
                 char_set.remove(s[left])      # 把左指针指向的字符从集合中移除
                 left += 1                     # 左指针右移一位
@@ -50,12 +48,6 @@ class Solution:
 ```python
 def lengthOfLongestSubstring(s):
 ```
-
-* `def`：告诉电脑 **要定义一个函数**
-* `lengthOfLongestSubstring`：函数名字（随便起，但要有意义）
-* `(s)`：函数的输入参数，这里 `s` 是字符串
-
-📌 意思：
 
 > 定义一个函数，用来计算字符串 `s` 中最长无重复子串的长度
 
