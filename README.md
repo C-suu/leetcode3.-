@@ -35,6 +35,7 @@ class Solution:
                 left += 1                     # 左指针右移一位
             char_set.add(s[right])            # 把当前字符加入集合
             max_len = max(max_len, right - left + 1)  # 更新最大长度
+            max_len = max(max_len, len(char_set)) # 如果写 len(char_set)，也可以；但写 right - left + 1 是滑动窗口的标准定义公式。
 
         return max_len                        # 返回最终结果
 ```
